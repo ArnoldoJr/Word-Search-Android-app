@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
 
     /**
      * Takes care of the selecting the cells while the user slides its finger.
+     * TODO: Make this smoother, cells are not selected if swipping is done fast enough
      */
     override fun onTouch( v:View , event: MotionEvent): Boolean{
 

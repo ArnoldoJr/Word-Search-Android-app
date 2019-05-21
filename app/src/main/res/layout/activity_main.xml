@@ -21,10 +21,11 @@
         android:id="@+id/words_grid"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_marginBottom="5dp"
         android:columnCount="1"
         android:rowCount="10"
         android:orientation="vertical"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:fitsSystemWindows="true"
         android:alignmentMode="alignBounds"
         android:background="@drawable/round_background"
@@ -32,7 +33,6 @@
         app:layout_constraintTop_toBottomOf="@+id/word_list">
 
         <LinearLayout
-            android:id="@+id/row_1"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -129,7 +129,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_2"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -229,7 +228,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_3"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -329,7 +327,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_4"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -429,7 +426,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_5"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -529,7 +525,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_6"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -629,7 +624,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_7"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -730,7 +724,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_8"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -830,7 +823,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_9"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -932,7 +924,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row_10"
             android:layout_height="@dimen/color_grid_height"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -1101,7 +1092,4 @@
             android:gravity="center"
             android:textSize="17sp"/>
     </LinearLayout>
-
-
-
 </android.support.constraint.ConstraintLayout>
