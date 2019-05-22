@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
     private var xDiff = -1f
     private var yDiff = -1f
 
+    private var prevXDiff = -1f
+    private var prevYDiff = -1f
+
     enum class SwipeState { Undefined, Vertical, Horizontal }
     private var swipeState = SwipeState.Undefined
 
@@ -95,13 +98,21 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
                         when {
                             xDiff > cellWidth -> {
                                 // moving left
-                                selectSingleCell((tagInt - (xDiff / cellWidth).toInt()).toString())
-                                swipeState = SwipeState.Horizontal
+                                if(prevXDiff == -1f || prevXDiff != -1f && prevXDiff < xDiff){
+                                    selectSingleCell((tagInt - (xDiff / cellWidth).toInt()).toString())
+                                    swipeState = SwipeState.Horizontal
+                                } else if ( prevXDiff != -1f && prevXDiff > xDiff){
+                                    unselectSingleCell((tagInt - (prevXDiff / cellWidth).toInt()).toString())
+                                }
                             }
                             (-1) * xDiff > cellWidth -> {
                                 // moving right
-                                selectSingleCell((tagInt + -1 * (xDiff / cellWidth).toInt()).toString())
-                                swipeState = SwipeState.Horizontal
+                                if(prevXDiff == -1f || prevXDiff != -1f && prevXDiff > xDiff){
+                                    selectSingleCell((tagInt + -1 * (xDiff / cellWidth).toInt()).toString())
+                                    swipeState = SwipeState.Horizontal
+                                } else if ( prevXDiff != -1f && prevXDiff < xDiff){
+                                    unselectSingleCell((tagInt - (prevXDiff / cellWidth).toInt()).toString())
+                                }
                             }
                         }
                     }
@@ -110,18 +121,29 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
                         when {
                             yDiff > cellWidth -> {
                                 // moving up
-                                selectSingleCell((tagInt - 10*(yDiff/cellWidth).toInt()).toString())
-                                swipeState = SwipeState.Vertical
+                                if(prevYDiff == -1f || prevYDiff != -1f && prevYDiff < yDiff){
+                                    selectSingleCell((tagInt - 10*(yDiff/cellWidth).toInt()).toString())
+                                    swipeState = SwipeState.Vertical
+                                } else if (prevYDiff != -1f && prevYDiff > yDiff){
+                                    unselectSingleCell((tagInt - 10*(yDiff/cellWidth).toInt()).toString())
+                                }
                             }
                             (-1)*yDiff > cellWidth -> {
                                 // moving down
-                                selectSingleCell((tagInt + -10*(yDiff/cellWidth).toInt()).toString())
-                                swipeState = SwipeState.Vertical
+                                if(prevYDiff == -1f || prevYDiff != -1f && prevYDiff > yDiff){
+                                    selectSingleCell((tagInt + -10*(yDiff/cellWidth).toInt()).toString())
+                                    swipeState = SwipeState.Vertical
+                                } else if (prevYDiff != -1f && prevYDiff < yDiff){
+                                    unselectSingleCell((tagInt - 10*(yDiff/cellWidth).toInt()).toString())
+                                }
                             }
                         }
                     }
+                    prevXDiff = xDiff
+                    prevYDiff = yDiff
                 }
             }
+
             MotionEvent.ACTION_UP -> {
                 // User's done selecting cells
                 val tag = v.tag.toString()
@@ -169,6 +191,8 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
                     yInitial = -1f
                     xDiff = -1f
                     yDiff = -1f
+                    prevXDiff = -1f
+                    prevYDiff = -1f
                     swipeState = SwipeState.Undefined
                     return
                 }
