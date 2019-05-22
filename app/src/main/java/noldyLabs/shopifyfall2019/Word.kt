@@ -1,7 +1,7 @@
 package noldyLabs.shopifyfall2019
 
 /**
- * Abstract representation of a word that has to be found in the grid
+ * Representation of a word that has to be found in the grid
  */
 class Word(word: String) {
 
